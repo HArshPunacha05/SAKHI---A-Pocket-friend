@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Translator - Real-Time Translation</title>
+    <meta name="description" content="Speak in your language, hear in theirs - Real-time voice translation">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" fill="url(#gradient1)" opacity="0.2" />
+                    <path
+                        d="M20 12C18.9 12 18 12.9 18 14V20C18 21.1 18.9 22 20 22C21.1 22 22 21.1 22 20V14C22 12.9 21.1 12 20 12Z"
+                        fill="url(#gradient1)" />
+                    <path
+                        d="M26 20C26 23.3 23.3 26 20 26C16.7 26 14 23.3 14 20H12C12 24.4 15.6 28 20 28C24.4 28 28 24.4 28 20H26Z"
+                        fill="url(#gradient1)" />
+                    <defs>
+                        <linearGradient id="gradient1" x1="8" y1="8" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#667eea" />
+                            <stop offset="100%" stop-color="#764ba2" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>VoiceBridge</h1>
+            </div>
+            <div class="connection-status" id="connectionStatus">
+                <div class="status-indicator"></div>
+                <span>Ready</span>
+            </div>
+        </header>
+
+        <!-- Setup Screen -->
+        <div class="setup-screen" id="setupScreen">
+            <div class="setup-card">
+                <div class="setup-header">
+                    <h2>🎤 Voice Translation Setup</h2>
+                    <p>Speak naturally, hear instantly in any language</p>
+                </div>
+
+                <div class="setup-form">
+                    <div class="form-group">
+                        <label for="userName">Your Name</label>
+                        <input type="text" id="userName" placeholder="Enter your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userLanguage">Your Language (What you speak)</label>
+                        <select id="userLanguage" required>
+                            <option value="en-US">🇬🇧 English</option>
+                            <option value="hi-IN">🇮🇳 Hindi (हिंदी)</option>
+                            <option value="es-ES">🇪🇸 Spanish (Español)</option>
+                            <option value="fr-FR">🇫🇷 French (Français)</option>
+                            <option value="de-DE">🇩🇪 German (Deutsch)</option>
+                            <option value="zh-CN">🇨🇳 Chinese (中文)</option>
+                            <option value="ja-JP">🇯🇵 Japanese (日本語)</option>
+                            <option value="ar-SA">🇸🇦 Arabic (العربية)</option>
+                            <option value="pt-PT">🇵🇹 Portuguese (Português)</option>
+                            <option value="ru-RU">🇷🇺 Russian (Русский)</option>
+                            <option value="it-IT">🇮🇹 Italian (Italiano)</option>
+                            <option value="ko-KR">🇰🇷 Korean (한국어)</option>
+                            <option value="ta-IN">🇮🇳 Tamil (தமிழ்)</option>
+                            <option value="te-IN">🇮🇳 Telugu (తెలుగు)</option>
+                            <option value="bn-IN">🇧🇩 Bengali (বাংলা)</option>
+                            <option value="mr-IN">🇮🇳 Marathi (मराठी)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="friendLanguage">Friend's Language (What they speak)</label>
+                        <select id="friendLanguage" required>
+                            <option value="hi-IN">🇮🇳 Hindi (हिंदी)</option>
+                            <option value="en-US">🇬🇧 English</option>
+                            <option value="es-ES">🇪🇸 Spanish (Español)</option>
+                            <option value="fr-FR">🇫🇷 French (Français)</option>
+                            <option value="de-DE">🇩🇪 German (Deutsch)</option>
+                            <option value="zh-CN">🇨🇳 Chinese (中文)</option>
+                            <option value="ja-JP">🇯🇵 Japanese (日本語)</option>
+                            <option value="ar-SA">🇸🇦 Arabic (العربية)</option>
+                            <option value="pt-PT">🇵🇹 Portuguese (Português)</option>
+                            <option value="ru-RU">🇷🇺 Russian (Русский)</option>
+                            <option value="it-IT">🇮🇹 Italian (Italiano)</option>
+                            <option value="ko-KR">🇰🇷 Korean (한국어)</option>
+                            <option value="ta-IN">🇮🇳 Tamil (தமிழ்)</option>
+                            <option value="te-IN">🇮🇳 Telugu (తెలుగు)</option>
+                            <option value="bn-IN">🇧🇩 Bengali (বাংলা)</option>
+                            <option value="mr-IN">🇮🇳 Marathi (मराठी)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roomId">Room Code</label>
+                        <div class="room-input-group">
+                            <input type="text" id="roomId" placeholder="Enter or generate room code">
+                            <button type="button" class="btn-secondary" id="generateRoomBtn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M17.5 8.33333V5.83333C17.5 4.91286 16.7538 4.16667 15.8333 4.16667H13.3333M6.66667 4.16667H4.16667C3.24619 4.16667 2.5 4.91286 2.5 5.83333V8.33333M2.5 11.6667V14.1667C2.5 15.0871 3.24619 15.8333 4.16667 15.8333H6.66667M13.3333 15.8333H15.8333C16.7538 15.8333 17.5 15.0871 17.5 14.1667V11.6667"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                                Generate
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path
+                                d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z"
+                                stroke="currentColor" stroke-width="2" />
+                            <path d="M10 10V14M10 6H10.01" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <div>
+                            <strong>How it works:</strong>
+                            <p>Click "Start Voice Translation" → Speak in your language → Your friend hears it in their
+                                language automatically!</p>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-primary" id="startBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path
+                                d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10V5C12.5 3.61929 11.3807 2.5 10 2.5C8.61929 2.5 7.5 3.61929 7.5 5V10C7.5 11.3807 8.61929 12.5 10 12.5Z"
+                                stroke="currentColor" stroke-width="2" />
+                            <path
+                                d="M15.8333 10V10.8333C15.8333 14.0549 13.2216 16.6667 10 16.6667C6.77834 16.6667 4.16667 14.0549 4.16667 10.8333V10"
+                                stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <span>Start Voice Translation</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voice Translation Screen -->
+        <div class="voice-screen hidden" id="voiceScreen">
+            <!-- Voice Header -->
+            <div class="voice-header">
+                <div class="user-info-panel">
+                    <div class="user-badge">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <div class="user-details">
+                            <span class="user-name" id="currentUserName">You</span>
+                            <span class="user-lang" id="currentUserLang">English</span>
+                        </div>
+                    </div>
+                    <div class="room-info">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 1L10.5 6L16 7L12 11L13 16L8 13.5L3 16L4 11L0 7L5.5 6L8 1Z"
+                                fill="currentColor" />
+                        </svg>
+                        <span id="currentRoomCode">Room: </span>
+                    </div>
+                </div>
+                <button class="btn-icon" id="leaveBtn" title="Leave Room">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path
+                            d="M7.5 17.5H4.16667C3.24619 17.5 2.5 16.7538 2.5 15.8333V4.16667C2.5 3.24619 3.24619 2.5 4.16667 2.5H7.5M13.3333 14.1667L17.5 10M17.5 10L13.3333 5.83333M17.5 10H7.5"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Main Voice Interface -->
+            <div class="voice-main">
+                <!-- Microphone Button -->
+                <div class="mic-container">
+                    <button class="mic-button" id="micButton">
+                        <div class="mic-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path
+                                    d="M24 30C27.3137 30 30 27.3137 30 24V12C30 8.68629 27.3137 6 24 6C20.6863 6 18 8.68629 18 12V24C18 27.3137 20.6863 30 24 30Z"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                                <path d="M38 24V25.6C38 32.9319 32.0692 39 24 39C15.9308 39 10 32.9319 10 25.6V24"
+                                    stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                                <path d="M24 39V42" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring-2"></div>
+                    </button>
+                    <div class="mic-status" id="micStatus">
+                        <span class="status-text">Tap to speak</span>
+                    </div>
+                </div>
+
+                <!-- Transcription Display -->
+                <div class="transcription-panel">
+                    <div class="transcription-box">
+                        <div class="transcription-label">What you said:</div>
+                        <div class="transcription-text" id="originalText">Speak to start...</div>
+                    </div>
+
+                    <div class="translation-arrow">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M6 16H26M26 16L20 10M26 16L20 22" stroke="url(#gradient2)" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <defs>
+                                <linearGradient id="gradient2" x1="6" y1="16" x2="26" y2="16">
+                                    <stop offset="0%" stop-color="#667eea" />
+                                    <stop offset="100%" stop-color="#764ba2" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+
+                    <div class="transcription-box translation-box">
+                        <div class="transcription-label">Translation (Friend hears):</div>
+                        <div class="transcription-text" id="translatedText">Translation will appear here...</div>
+                    </div>
+                </div>
+
+                <!-- Conversation History -->
+                <div class="conversation-history">
+                    <h3>Conversation History</h3>
+                    <div class="history-list" id="historyList">
+                        <div class="history-empty">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" opacity="0.3">
+                                <path
+                                    d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z"
+                                    stroke="currentColor" stroke-width="3" />
+                                <path d="M24 14V24L30 30" stroke="currentColor" stroke-width="3"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <p>Your conversation will appear here</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Audio Element for TTS -->
+    <audio id="audioPlayer" style="display: none;"></audio>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
